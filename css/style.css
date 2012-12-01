@@ -1,0 +1,18 @@
+/*
+ * style.scss
+ * author: Tsukasa Obara
+ * url   : http://saucer.jp
+ */
+body {
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Share Tech Mono', sans-serif; }
+
+body {
+  line-height: 1.5; }
+
+#copyright .saucer-web {
+  color: #000;
+  text-decoration: none; }
+  #copyright .saucer-web:hover {
+    text-decoration: underline; }

@@ -1,0 +1,380 @@
+// _global_mixins.scss start
+
+// ********************
+// method
+// ********************
+// type-of(100px)      => number
+// type-of(asdf)       => string
+// type-of("asdf")     => string
+// type-of(true)       => bool
+// type-of(#fff #fff)  => list
+// type-of(#fff)       => color
+// type-of(blue)       => color
+
+// unit(100) => ""
+// unit(100px) => "px"
+// unit(3em) => "em"
+// unit(10px * 5em) => "em*px"
+// unit(10px * 5em / 30cm / 1rem) => "em*px/cm*rem"
+
+// unitless(100) => true
+// unitless(100px) => false
+
+// unquote("foo") => foo
+// unquote(foo) => foo
+//
+// quote("foo") => "foo"
+// quote(foo) => "foo"
+
+// length(10px) => 1
+// length(10px 20px 30px) => 3
+
+// join(10px 20px, 30px 40px) => 10px 20px 30px 40px
+// join((blue, red), (#abc, #def)) => blue, red, #abc, #def
+// join(10px, 20px) => 10px 20px
+// join(10px, 20px, comma) => 10px, 20px
+// join((blue, red), (#abc, #def), space) => blue red #abc #def
+
+// if(true, 1px, 2px) => 1px
+// if(false, 1px, 2px) => 2px
+
+// nth(10px 20px 30px, 1) => 10px
+// nth((Helvetica, Arial, sans-serif), 3) => sans-serif
+
+// ********************
+// vendor prefix output flag
+// ********************
+$prefix-webkit:true;
+$prefix-moz:true;
+$prefix-o:true;
+$prefix-ms:true;
+  $filter-ie6_7:true;
+  $filter-ie8:true;
+  $gradient-ie6_7:true;
+  $gradient-ie8_9:true;
+
+// ********************
+// opacity
+// ********************
+// Value: number ( 0 ~ 1 )
+// e.g. @include opacity( 0.5 );
+@mixin opacity( $value ) {
+  opacity:$value;// except IE6,7,8
+  @if $prefix-ms == true {
+    $ie:$value*100;
+    @if $filter-ie6_7 == true {
+      filter:alpha(opacity=#{ $ie }); // IE6,7
+    }
+    @if $filter-ie8 == true {
+      -ms-filter:"alpha(opacity=#{ $ie })"; // IE8
+    }
+  }
+}
+// ********************
+// box-sizing
+// ********************
+// Value: content-box | border-box
+@mixin box-sizing( $value ) {
+  @if $prefix-webkit == true {
+    -webkit-box-sizing:$value;
+  }
+  @if $prefix-moz == true {
+    -moz-box-sizing:$value;
+  }
+  box-sizing:$value; // the standard, IE8~
+}
+// ********************
+// box-shadow
+// ********************
+// TODO: inset どうしよう？
+// e.g. @include box-shadow( 2px 2px 2px #000 );
+// e.g. @include box-shadow( 2px 2px 2px rgba( #000, 0.2 ) );
+@mixin box-shadow( $value ) {
+  @if $prefix-webkit == true {
+    -webkit-box-shadow:$value; // chrome, safari
+  }
+  @if $prefix-moz == true {
+    -moz-box-shadow:$value; // firefox
+  }
+  box-shadow:$value; // opera10.5~
+}
+// ********************
+// border-radius
+// ********************
+// 最新ブラウザならいらない子なんだけど一応
+// e.g. @include border-radius( 6px );
+// e.g. @include border-radius( 2px 4px 4px 2px );
+@mixin border-radius( $value ) {
+  @if $prefix-moz == true {
+    -moz-border-radius:$value; // legacy firefox
+  }
+  border-radius:$value; // the standard
+}
+// ********************
+// linear-gradient
+// ********************
+// e.g. @include linear-gradient( #eee #ccc );
+@function linearGradientTopColor( $value ) {
+  @if length( $value ) == 1 {
+    @if type-of( $value ) == color {
+      $topColor: $value;
+      @return $topColor;
+    }
+  }
+  @if length( $value ) == 2 {
+    @if type-of( nth( $value, 1 ) ) == color and type-of( nth( $value, 2 ) ) == color {
+      $topColor: nth( $value, 1 );
+      @return $topColor;
+    }
+  }
+}
+@function linearGradientBottomColor( $value ) {
+  @if length( $value ) == 1 {
+    @if type-of( $value ) == color {
+      $bottomColor: $value;
+      @return $bottomColor;
+    }
+  }
+  @if length( $value ) == 2 {
+    @if type-of( nth( $value, 1 ) ) == color and type-of( nth( $value, 2 ) ) == color {
+      $bottomColor: nth( $value, 2 );
+      @return $bottomColor;
+    }
+  }
+}
+@mixin linear-gradient( $value ) {
+  $topColor:linearGradientTopColor( $value );
+  $bottomColor:linearGradientBottomColor( $value );
+  background-color:$topColor;
+  @if $prefix-webkit == true {
+    background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%, $topColor), color-stop(100%, $bottomColor)); // Safari 4+, Chrome 2+
+    background-image:-webkit-linear-gradient(top, $topColor 0%, $bottomColor 100%); // Safari 5.1+ Chrome 10+
+  }
+  @if $prefix-moz == true {
+    background-image:-moz-linear-gradient(top, $topColor 0%, $bottomColor 100%); // FF 3.6+
+  }
+  @if $prefix-o == true {
+    background-image:-o-linear-gradient(top, $topColor 0%, $bottomColor 100%); // Opera 11.10
+  }    
+  @if $prefix-ms == true {
+    @if $gradient-ie6_7 == true {
+      filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#{ie-hex-str($topColor)}', endColorstr='#{ie-hex-str($bottomColor)}'); /* IE6,7 */
+    }
+    @if $gradient-ie8_9 == true {
+      -ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($topColor)}', endColorstr='#{ie-hex-str($bottomColor)}')"; /* IE8+ */
+    }
+    //background-image:-ms-linear-gradient($topColor, $bottomColor); // IE10に必要かと思ったけどstandardが採用された
+  }    
+  background-image:linear-gradient(to bottom, $topColor 0%, $bottomColor 100%); // the standard, IE10+, FF16+
+}
+//@mixin -pie-linear-gradient( $arg, $option:none ) {
+//  @include linear-gradient( $arg );
+//  @if length( $arg ) == 2 and type-of( nth( $arg, 1 ) ) == color {
+//    $topColor: nth( $arg, 1 );
+//    $bottomColor: nth( $arg, 2 );
+//    -pie-background: linear-gradient($topColor, $bottomColor);
+//    behavior:$piePath;
+//  }
+//  @if( $option == ie6 ) {
+//    _position:relative; // IE6
+//  } @elseif( $option == ie67 ) {
+//    *position:relative; // IE6,7
+//  } @elseif( $option == ie678 ) {
+//    position:relative\9; // IE6,7,8
+//  }
+//}
+
+// ********************
+// user-select
+// ********************
+// Value: none | text | toggle | element | elements | all | inherit
+@mixin user-select( $value ) {
+  @if $prefix-webkit == true {
+    -webkit-user-select: $value; // 
+  }
+  @if $prefix-moz == true {
+    -moz-user-select: $value; // 
+  }
+  @if $prefix-o == true {
+    -o-user-select: $value; // Opera?
+  }
+  @if $prefix-ms == true {
+    -ms-user-select: $value; // IE10
+  }
+  user-select: $value; // the standard
+}
+// ********************
+// image-rendering
+// ********************
+// Value: auto | optimizeSpeed | optimizeQuality | inherit
+// Legacy Value: auto | optimize-contrast
+@mixin image-rendering( $value ) {
+  @if $value == auto {
+    image-rendering:auto;
+    @if $prefix-ms == true {
+      -ms-interpolation-mode:bicubic;
+      interpolation-mode:bicubic;
+    }
+
+  } @else if $value == optimize-contrast {
+    @if $prefix-webkit == true {
+      image-rendering:-webkit-optimize-contrast;
+    }
+    @if $prefix-moz == true {
+      image-rendering:-moz-crisp-edges;
+    }
+    @if $prefix-o == true {
+      image-rendering:-o-crisp-edges;
+    }
+    @if $prefix-ms == true {
+      -ms-interpolation-mode:nearest-neighbor;
+      interpolation-mode:nearest-neighbor;
+    }
+    image-rendering:optimize-contrast; // the standard
+
+  } @else if $value == optimizeSpeed {
+    image-rendering:optimizeSpeed;
+    @if $prefix-ms == true {
+      -ms-interpolation-mode:nearest-neighbor;
+      interpolation-mode:nearest-neighbor;
+    }
+
+  } @else if $value == optimizeQuality {
+    image-rendering:optimizeQuality;
+    @if $prefix-ms == true {
+      -ms-interpolation-mode:bicubic;
+      interpolation-mode:bicubic;
+    }
+
+  } @else {
+    image-rendering:$value;
+  }
+}
+// ********************
+// css-arrow
+// ********************
+// Value: position size color
+// e.g. @include css-arrow( left 10px #000 );
+%ex-css-arrow {
+  position:relative;
+  &:after {
+    content:'';
+    position:absolute;
+    width:0;
+    height:0;
+  }
+}
+@mixin css-arrow( $value ) {
+  $position:nth( $value, 1 ); // arrow position
+  $size:nth( $value, 2 );     // arrow size
+  $color:nth( $value, 3 );    // arrow color
+  @extend %ex-css-arrow;
+  &:after {
+    border:$size solid transparent;
+    @if $position == top {
+      border-bottom-color:$color;
+      top:- $size * 2;
+      margin-left:- $size;
+      left:50%;
+    }
+    @if $position == bottom {
+      border-top-color:$color;
+      bottom:- $size * 2;
+      margin-left:- $size;
+      left:50%;
+    }
+    @if $position == left {
+      border-right-color:$color;
+      left:- $size * 2;
+      margin-top:- $size;
+      top:50%;
+    }
+    @if $position == right {
+      border-left-color:$color;
+      right:- $size * 2;
+      margin-top:- $size;
+      top:50%;
+    }
+  }
+}
+// ********************
+// transition
+// ********************
+// e.g. @include transition( all 1s ease-out );
+// e.g. @include transition( all 1s 1s ease-out );
+// http://www.w3.org/TR/2012/WD-css3-transitions-20120403/
+@mixin transition( $value ) {
+  @if $prefix-webkit == true {
+    -webkit-transition:$value;
+  }
+  @if $prefix-moz == true {
+    -moz-transition:$value;
+  }
+  @if $prefix-o == true {
+    -o-transition:$value;
+  }
+  @if $prefix-ms == true {
+    -ms-transition:$value;
+  }
+  transition:$value;
+}
+// ********************
+// transform
+// ********************
+@mixin transform( $value ) {
+  @if $prefix-webkit == true {
+    -webkit-transform:$value;
+  }
+  @if $prefix-moz == true {
+    -moz-transform:$value;
+  }
+  @if $prefix-o == true {
+    -o-transform:$value;
+  }
+  @if $prefix-ms == true {
+    -ms-transform:$value;
+  }
+  transform:$value;
+}
+// ********************
+// animation, keyframes
+// ********************
+// e.g.
+// @include keyframes( hoge ) {
+//   0% { ... }
+//   100% { ... }}
+// @include keyframes( fuga ) {
+//   0% { ... }
+//   100% { ... }}
+// body {
+//   @include animation( ..., ... ); }
+@mixin animation( $value... ) {
+  @if $prefix-webkit == true {
+    -webkit-animation:$value;
+  }
+  @if $prefix-moz == true {
+    -moz-animation:$value;
+  }
+  @if $prefix-o == true {
+    -o-animation:$value;
+  }
+  @if $prefix-ms == true {
+    -ms-animation:$value;
+  }
+  animation:$value;
+}
+@mixin keyframes( $name ) {
+  @if $prefix-webkit == true {
+    @-webkit-keyframes #{$name} { @content }
+  }
+  @if $prefix-moz == true {
+    @-moz-keyframes #{$name} { @content }
+  }
+  @if $prefix-o == true {
+    @-o-keyframes #{$name} { @content }
+  }
+  @if $prefix-ms == true {
+    @-ms-keyframes #{$name} { @content }
+  }
+  @keyframes #{$name} { @content }
+}

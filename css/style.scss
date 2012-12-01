@@ -1,0 +1,43 @@
+/*!
+ * style.scss
+ * author: Tsukasa Obara
+ * url   : http://saucer.jp
+ */
+
+@import "global_mixins";
+// ********************
+// vendor prefix output flag
+// ********************
+$prefix-webkit:true;
+$prefix-moz:true;
+$prefix-o:false;
+$prefix-ms:false;
+
+// ********************
+// placeholder
+// ********************
+%web-font {
+  font-size:12px;
+  font-weight:400;
+  font-family: 'Share Tech Mono', sans-serif;
+}
+// ********************
+// style
+// ********************
+body {
+  @extend %web-font;
+  line-height:1.5;
+}
+#title {
+}
+.version {
+}
+#copyright {
+  .saucer-web {
+    color:#000;
+    text-decoration:none;
+    &:hover {
+      text-decoration:underline;
+    }
+  }
+}
