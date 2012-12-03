@@ -16,3 +16,7 @@ body {
   text-decoration: none; }
   #copyright .saucer-web:hover {
     text-decoration: underline; }
+
+.hexs {
+  width: 100px;
+  height: 100px; }
