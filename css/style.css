@@ -8,8 +8,19 @@ body {
   font-weight: 400;
   font-family: 'Share Tech Mono', sans-serif; }
 
+html,
+body {
+  width: 100%;
+  height: 100%; }
+
 body {
   line-height: 1.5; }
+
+ul {
+  margin: 0; }
+
+li {
+  list-style: none; }
 
 #copyright .saucer-web {
   color: #000;
@@ -17,6 +28,32 @@ body {
   #copyright .saucer-web:hover {
     text-decoration: underline; }
 
-.hexs {
-  width: 100px;
-  height: 100px; }
+#hexSighters {
+  width: 780px;
+  height: 520xp;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -390px;
+  margin-top: -260px; }
+  #hexSighters > li {
+    float: left;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    margin: 5px;
+    background: #eee;
+    position: relative; }
+  #hexSighters .hexs {
+    width: 100px;
+    height: 100px; }
+  #hexSighters .precisions {
+    position: absolute;
+    font-size: 10px;
+    top: 5px;
+    left: 5px; }
+
+#log {
+  position: absolute;
+  top: 10px;
+  left: 10px; }

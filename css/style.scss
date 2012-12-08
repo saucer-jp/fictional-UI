@@ -24,9 +24,20 @@ $prefix-ms:false;
 // ********************
 // style
 // ********************
+html,
+body {
+  width:100%;
+  height:100%;
+}
 body {
   @extend %web-font;
   line-height:1.5;
+}
+ul {
+  margin:0;
+}
+li {
+  list-style:none;
 }
 #title {
 }
@@ -42,10 +53,39 @@ body {
   }
 }
 
-.hexs {
-  width:100px;
-  height:100px;
+#hexSighters {
+  width:130px * 6;
+  height:130xp * 4;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-left:-130px * 6 / 2;
+  margin-top:-130px * 4 / 2;
 
+  & > li {
+    float:left;
+    width:100px;
+    height:100px;
+    padding:10px;
+    margin:5px;
+    background:#eee;
+    position:relative;
+  }
+  .hexs {
+    width:100px;
+    height:100px;
+  }
   .hex {
   }
+  .precisions {
+    position:absolute;
+    font-size:10px;
+    top:5px;
+    left:5px;
+  }
+}
+#log {
+  position:absolute;
+  top:10px;
+  left:10px;
 }

@@ -5,7 +5,7 @@
 
 
 $(function(){
-  HexSighter.run( 2 );
+  HexSighter.run( 24 );
   logger.run( 80, 200 );
 });
 
