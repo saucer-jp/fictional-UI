@@ -4,9 +4,12 @@
  * url   : http://saucer.jp
  */
 body {
-  font-size: 12px;
   font-weight: 400;
   font-family: 'Share Tech Mono', sans-serif; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
 
 html {
   background: #b31231;
@@ -26,19 +29,36 @@ html {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b31231', endColorstr='#ff9e4a',GradientType=1 );
   /* IE6-9 fallback on horizontal gradient */ }
 
-html,
 body {
-  width: 100%;
-  height: 100%; }
-
-body {
-  line-height: 1.5; }
+  line-height: 1.5;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  position: relative;
+  margin: 0; }
 
 ul {
-  margin: 0; }
+  margin: 0;
+  padding: 0; }
 
 li {
   list-style: none; }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center; }
+
+#container {
+  position: absolute;
+  width: 880px;
+  height: 496px;
+  padding: 50px;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
 
 #copyright .saucer-web {
   color: #000;
@@ -47,27 +67,22 @@ li {
     text-decoration: underline; }
 
 #hexSighters {
-  width: 780px;
-  height: 520xp;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -390px;
-  margin-top: -260px; }
+  overflow: hidden; }
   #hexSighters > li {
+    box-sizing: border-box;
     float: left;
-    width: 100px;
-    height: 100px;
-    padding: 10px;
-    margin: 5px;
-    background: #eee;
+    width: 106px;
+    height: 106px;
+    margin: 2px;
+    margin-top: 2px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
     position: relative; }
   #hexSighters .hexs {
     width: 100px;
     height: 100px; }
   #hexSighters .precisions {
     position: absolute;
-    font-size: 10px;
     top: 5px;
     left: 5px; }
 

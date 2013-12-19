@@ -17,13 +17,25 @@ $prefix-ms:false;
 // placeholder
 // ********************
 %web-font {
-  font-size:12px;
   font-weight:400;
   font-family: 'Share Tech Mono', sans-serif;
 }
 // ********************
+// var
+// ********************
+$hexSighterWidth: 106px;
+$hexSighterMargin: 2px;
+$hexSighterMarginBottom: $hexSighterMargin * 8;
+
+
+
+// ********************
 // style
 // ********************
+html, body {
+  width: 100%;
+  height: 100%;
+}
 html {
   background: #b31231; /* Old browsers */
   background: -moz-linear-gradient(50deg,  #b31231 0%, #f54966 40%, #ff9e4a 100%); /* FF3.6+ */
@@ -34,20 +46,37 @@ html {
   background: linear-gradient(50deg,  #b31231 0%,#f54966 40%,#ff9e4a 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b31231', endColorstr='#ff9e4a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
-html,
-body {
-  width:100%;
-  height:100%;
-}
 body {
   @extend %web-font;
   line-height:1.5;
+  font-size: 10px;
+  color: rgba( #fff, 0.5 );
+  position: relative;
+  margin: 0;
 }
 ul {
   margin:0;
+  padding: 0;
 }
 li {
   list-style:none;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+#container {
+  position: absolute;
+  width: $hexSighterWidth * 8 + $hexSighterMargin * 8 * 2;
+  height: $hexSighterWidth * 4 + $hexSighterMargin * 4 * 2 + $hexSighterMarginBottom + 40;
+  padding: 50px;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 #title {
 }
@@ -64,21 +93,17 @@ li {
 }
 
 #hexSighters {
-  width:130px * 6;
-  height:130xp * 4;
-  position:absolute;
-  top:50%;
-  left:50%;
-  margin-left:-130px * 6 / 2;
-  margin-top:-130px * 4 / 2;
+  overflow: hidden;
 
   & > li {
+    box-sizing: border-box;
     float:left;
-    width:100px;
-    height:100px;
-    padding:10px;
-    margin:5px;
-    background:#eee;
+    width: $hexSighterWidth;
+    height: $hexSighterWidth;
+    margin: $hexSighterMargin;
+    margin-top: $hexSighterMargin;
+    margin-bottom: $hexSighterMarginBottom;
+    border: 1px solid rgba( #fff, 0.4 );
     position:relative;
   }
   .hexs {
@@ -89,7 +114,6 @@ li {
   }
   .precisions {
     position:absolute;
-    font-size:10px;
     top:5px;
     left:5px;
   }
