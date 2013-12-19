@@ -1,4 +1,4 @@
-/*
+/*!
  * style.scss
  * author: Tsukasa Obara
  * url   : http://saucer.jp
@@ -7,6 +7,24 @@ body {
   font-size: 12px;
   font-weight: 400;
   font-family: 'Share Tech Mono', sans-serif; }
+
+html {
+  background: #b31231;
+  /* Old browsers */
+  background: -moz-linear-gradient(45deg, #b31231 0%, #f54966 40%, #ff9e4a 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #b31231), color-stop(40%, #f54966), color-stop(100%, #ff9e4a));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(45deg, #b31231 0%, #f54966 40%, #ff9e4a 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg, #b31231 0%, #f54966 40%, #ff9e4a 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg, #b31231 0%, #f54966 40%, #ff9e4a 100%);
+  /* IE10+ */
+  background: linear-gradient(45deg, #b31231 0%, #f54966 40%, #ff9e4a 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b31231', endColorstr='#ff9e4a',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */ }
 
 html,
 body {
