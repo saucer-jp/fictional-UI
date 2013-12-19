@@ -37,7 +37,7 @@ var HexSighter = {
   // --------------------
   // render
   render: function( $el ){
-    $('body').prepend( $el );
+    $('#container').prepend( $el );
   }
 };
 
