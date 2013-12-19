@@ -111,6 +111,9 @@ footer {
     height:100px;
   }
   .hex {
+    fill: rgba( #fff, 0.2 );
+    stroke: rgba( #fff, 0.4 );
+    stroke-width: 1;
   }
   .precisions {
     position:absolute;

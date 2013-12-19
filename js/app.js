@@ -304,9 +304,6 @@ function Indicator( $parent, id ){
       hex.setAttribute('class','hex');
       hex.setAttribute('transform',translate + ',' + scale);
       hex.setAttribute('filter','url(#filter)');
-      hex.setAttribute('fill','rgba(0,0,0,0.05)');
-      hex.setAttribute('stroke','rgba(0,0,0,0.05)');
-      hex.setAttribute('stroke-width','2');
       hex.setAttribute('points','20,70 0,35 20,0 59.9,0 79.8,35 59.9,70');
       return hex;
     }
