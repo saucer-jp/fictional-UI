@@ -61,7 +61,7 @@ footer {
   right: 0; }
 
 #copyright .saucer-web {
-  color: #000;
+  color: rgba(250, 255, 0, 0.7);
   text-decoration: none; }
   #copyright .saucer-web:hover {
     text-decoration: underline; }
