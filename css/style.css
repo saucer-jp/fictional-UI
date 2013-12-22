@@ -90,8 +90,10 @@ footer {
 
 .precisions {
   position: absolute;
-  top: 5px;
-  left: 5px; }
+  top: 3px;
+  left: 6px; }
+  .precisions li {
+    height: 1em; }
 
 .svg_rect {
   stroke-width: 1px;
