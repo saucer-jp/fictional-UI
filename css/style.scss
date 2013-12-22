@@ -94,8 +94,6 @@ footer {
 }
 
 .hexSighters {
-  overflow: hidden;
-
   & > li {
     box-sizing: border-box;
     float:left;
@@ -105,6 +103,15 @@ footer {
     margin-top: $hexSighterMargin;
     margin-bottom: $hexSighterMarginBottom;
     position:relative;
+    counter-increment: hexs-count;
+
+    &:after {
+      content: '00-' counter( hexs-count );
+      position: absolute;
+      right: 2px;
+      bottom: -14px;
+      color: rgba( #fff, 0.4 );
+    }
   }
   svg {
     position: relative;

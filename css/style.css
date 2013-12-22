@@ -67,21 +67,26 @@ footer {
   #copyright .saucer-web:hover {
     text-decoration: underline; }
 
-.hexSighters {
-  overflow: hidden; }
-  .hexSighters > li {
-    box-sizing: border-box;
-    float: left;
-    width: 108px;
-    height: 108px;
-    margin: 2px;
-    margin-top: 2px;
-    margin-bottom: 22px;
-    position: relative; }
-  .hexSighters svg {
-    position: relative;
-    top: -10px;
-    left: -10px; }
+.hexSighters > li {
+  box-sizing: border-box;
+  float: left;
+  width: 108px;
+  height: 108px;
+  margin: 2px;
+  margin-top: 2px;
+  margin-bottom: 22px;
+  position: relative;
+  counter-increment: hexs-count; }
+  .hexSighters > li:after {
+    content: "00-" counter(hexs-count);
+    position: absolute;
+    right: 2px;
+    bottom: -14px;
+    color: rgba(255, 255, 255, 0.4); }
+.hexSighters svg {
+  position: relative;
+  top: -10px;
+  left: -10px; }
 
 .precisions {
   position: absolute;
