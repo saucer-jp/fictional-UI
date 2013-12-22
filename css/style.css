@@ -90,6 +90,27 @@ footer {
     top: 5px;
     left: 5px; }
 
+.svg_rect {
+  stroke-width: 1px;
+  stroke: rgba(255, 255, 255, 0.3);
+  fill: none; }
+
+.svg_corner {
+  fill: rgba(255, 255, 255, 0.2); }
+
+.svg_tri {
+  stroke-width: 1px;
+  stroke: rgba(255, 255, 255, 0.3);
+  fill: none; }
+
+.svg_plus {
+  fill: rgba(255, 255, 255, 0.2); }
+
+.svg_hex {
+  stroke-width: 1px;
+  stroke: rgba(255, 255, 255, 0.2);
+  fill: rgba(255, 255, 255, 0.15); }
+
 #log {
   position: absolute;
   top: 10px;

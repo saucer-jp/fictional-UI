@@ -9,7 +9,86 @@
 </head>
 <body>
   <div id="container">
-    <ul id="log"></ul>
+    <ul class="hexSighters">
+      <li class="hexSighter">
+        <svg width="126" height="136" viewBox="-10 -10 126 136" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <defs>
+            <filter id="hex1" x="0" y="0" width="120" height="120">
+              <feGaussianBlur stdDeviation="1" result="blur"/>
+              <feOffset in="blur" dx="17" dy="21" result="img"/>
+              <feBlend in="img" mode="screen"/>
+            </filter>
+            <filter id="hex2" x="0" y="0" width="120" height="120">
+              <feGaussianBlur stdDeviation="1" result="blur"/>
+              <feOffset in="blur" dx="46" dy="50" result="img"/>
+              <feBlend in="img" mode="screen"/>
+            </filter>
+            <filter id="hex3" x="0" y="0" width="120" height="120">
+              <feGaussianBlur stdDeviation="1" result="blur"/>
+              <feOffset in="blur" dx="88" dy="92" result="img"/>
+              <feBlend in="img" mode="screen"/>
+            </filter>
+            <filter id="plus" x="0" y="0" width="120" height="120">
+              <feOffset in="SourceGraphic" dx="8" dy="8" result="img1"/>
+              <feOffset in="SourceGraphic" dx="46" dy="8" result="img2"/>
+              <feOffset in="SourceGraphic" dx="86" dy="8" result="img3"/>
+              <feOffset in="SourceGraphic" dx="8" dy="46" result="img4"/>
+              <feOffset in="SourceGraphic" dx="46" dy="46" result="img5"/>
+              <feOffset in="SourceGraphic" dx="86" dy="46" result="img6"/>
+              <feOffset in="SourceGraphic" dx="8" dy="86" result="img7"/>
+              <feOffset in="SourceGraphic" dx="46" dy="86" result="img8"/>
+              <feOffset in="SourceGraphic" dx="86" dy="86" result="img9"/>
+              <feMerge>
+                <feMergeNode in="img1"/>
+                <feMergeNode in="img2"/>
+                <feMergeNode in="img3"/>
+                <feMergeNode in="img4"/>
+                <feMergeNode in="img5"/>
+                <feMergeNode in="img6"/>
+                <feMergeNode in="img7"/>
+                <feMergeNode in="img8"/>
+                <feMergeNode in="img9"/>
+              </feMerge>
+            </filter>
+            <filter id="tri" x="0" y="0" width="8" height="50">
+              <feOffset in="SourceGraphic" dx="0" dy="112"/>
+            </filter>
+            <filter id="corner1" x="-2" y="-2" width="124" height="124">
+              <feGaussianBlur stdDeviation="1" result="blur"/>
+              <feOffset in="blur" dx="-2" dy="-2" result="img"/>
+              <feBlend in="img" mode="screen"/>
+            </filter>
+            <filter id="corner2" x="-2" y="-108" width="124" height="124">
+              <feGaussianBlur stdDeviation="1" result="blur"/>
+              <feOffset in="blur" dx="-2" dy="-108" result="img"/>
+              <feBlend in="img" mode="screen"/>
+            </filter>
+            <filter id="corner3" x="-108" y="-108" width="124" height="124">
+              <feGaussianBlur stdDeviation="1" result="blur"/>
+              <feOffset in="blur" dx="-108" dy="-108" result="img"/>
+              <feBlend in="img" mode="screen"/>
+            </filter>
+            <filter id="corner4" x="-108" y="-2" width="124" height="124">
+              <feGaussianBlur stdDeviation="1" result="blur"/>
+              <feOffset in="blur" dx="-108" dy="-2" result="img"/>
+              <feBlend in="img" mode="screen"/>
+            </filter>
+          </defs>
+          <rect class="svg_rect" x="0" y="0" width="106" height="106"/>
+          <polygon class="svg_corner" filter="url(#corner1)" points="0 0,16 0,16 4,4 4,4 16,0 16,0 0"/>
+          <polygon class="svg_corner" filter="url(#corner2)" points="0 0,16 0,16 4,4 4,4 16,0 16,0 0" transform="rotate(90)"/>
+          <polygon class="svg_corner" filter="url(#corner3)" points="0 0,16 0,16 4,4 4,4 16,0 16,0 0" transform="rotate(180)"/>
+          <polygon class="svg_corner" filter="url(#corner4)" points="0 0,16 0,16 4,4 4,4 16,0 16,0 0" transform="rotate(270)"/>
+          <polygon class="svg_tri" filter="url(#tri)" points="0 0,8 3,0 5"/>
+          <polygon class="svg_plus" filter="url(#plus)" points="5 0,6 0,6 5,11 5,11 6,6 6,6 11,5 11,5 6,0 6,0 5,5 5"/>
+          <polygon class="svg_hex" filter="url(#hex1)" points="20,70 0,35 20,0 60,0 80,35 60,70" transform="scale(0.9)"/>
+          <polygon class="svg_hex" filter="url(#hex2)" points="20,70 0,35 20,0 60,0 80,35 60,70" transform="scale(0.6)"/>
+          <polygon class="svg_hex" filter="url(#hex3)" points="20,70 0,35 20,0 60,0 80,35 60,70" transform="scale(0.4)"/>
+        </svg>
+      </li>
+    </ul>
+    <ul id="log">
+    </ul>
     <footer>
       <span id="title">Fictional UI</span>
       <span class="version">Ver.0.0.1</span>
