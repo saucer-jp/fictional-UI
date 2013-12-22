@@ -196,7 +196,8 @@ function Indicator( $el, id, $svg ){
   // getPrecision
   proto.getPrecision = function(){
     var precision = 0;
-    precision = Math.random();
+    var num = 3 + Math.floor( Math.random() * 3 );
+    precision = Math.random().toFixed( num );
     return precision;
   };
 
@@ -207,7 +208,7 @@ function Indicator( $el, id, $svg ){
   this.run = function(){
     self.render();
     //self.event();
-    self.setPrecision( 250 );
+    self.setPrecision( 200 );
   };
 
   // event
