@@ -52,7 +52,7 @@ footer {
 #container {
   position: absolute;
   width: 896px;
-  height: 540px;
+  height: 510px;
   padding: 50px;
   margin: auto;
   top: 0;
@@ -107,6 +107,34 @@ footer {
   stroke-width: 1px;
   stroke: rgba(255, 255, 255, 0.2);
   fill: rgba(255, 255, 255, 0.15); }
+
+#container > div > svg {
+  fill: rgba(255, 255, 255, 0.4); }
+
+.svg_container-corner_top-left {
+  top: 0;
+  left: 0;
+  position: absolute; }
+
+.svg_container-corner_top-right {
+  top: 0;
+  right: 0;
+  position: absolute; }
+
+.svg_container-corner_bottom-right {
+  bottom: 0;
+  right: 0;
+  position: absolute; }
+
+.svg_container-corner_bottom-left {
+  bottom: 0;
+  left: 0;
+  position: absolute; }
+  .svg_container-corner_bottom-left:after {
+    content: 'p-00-002';
+    position: absolute;
+    bottom: 6px;
+    left: 6px; }
 
 #log {
   position: absolute;
