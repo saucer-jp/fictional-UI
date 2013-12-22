@@ -6,7 +6,7 @@
 
 $(function(){
   HexSighter.run( 32 );
-  logger.run( 80, null );
+  logger.run( 100, null );
 });
 
 
@@ -86,6 +86,7 @@ var logger = {
     'Or start manually with:',
     '  pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start',
     'And stop with:',
+    '&nbsp;',
     '  pg_ctl -D /usr/local/var/postgres stop -s -m fast',
     '# Loading Extensions',
     'By default, Homebrew builds all available Contrib extensions.  To see a list of all',
@@ -162,7 +163,7 @@ var logger = {
   printLog: function( $logs, logStr ){
 
     var $log = $('<li/>');
-    $log.text( logStr );
+    $log.html( logStr );
 
     var listLength = $logs.find('li').length;
     if( listLength > 20 ){
