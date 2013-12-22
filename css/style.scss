@@ -70,8 +70,8 @@ footer {
 }
 h1 {
   position: absolute;
-  top: 5px;
-  left: 10px;
+  top: -10px;
+  left: 0;
   margin: 0;
 }
 #container {
@@ -161,6 +161,7 @@ h1 {
   top: 0;
   left: 0;
   position: absolute;
+  display: none;
 }
 .svg_container-corner_top-right {
   top: 0;
@@ -187,7 +188,7 @@ h1 {
 
 #log {
   position:absolute;
-  top:34px;
-  left:10px;
+  top:29px;
+  left: 0;
 }
 
