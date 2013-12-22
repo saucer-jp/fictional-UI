@@ -50,6 +50,12 @@ footer {
   right: 0;
   text-align: center; }
 
+h1 {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  margin: 0; }
+
 #container {
   position: absolute;
   width: 896px;
