@@ -6,7 +6,7 @@
 
 $(function(){
   HexSighter.run( 32 );
-  logger.run( 80, 200 );
+  logger.run( 80, null );
 });
 
 
@@ -146,7 +146,10 @@ var logger = {
         logCount++;
       }
 
-      if( count > stopCount ){
+      if( stopCount === null ){
+        logCount++;
+        return;
+      }else if( count > stopCount ){
         clearInterval( iterator );
       }
     }
