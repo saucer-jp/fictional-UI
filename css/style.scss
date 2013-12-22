@@ -23,9 +23,9 @@ $prefix-ms:false;
 // ********************
 // var
 // ********************
-$hexSighterWidth: 106px;
+$hexSighterWidth: 108px;
 $hexSighterMargin: 2px;
-$hexSighterMarginBottom: $hexSighterMargin * 8;
+$hexSighterMarginBottom: $hexSighterMargin * 11;
 
 
 
@@ -70,7 +70,7 @@ footer {
 #container {
   position: absolute;
   width: $hexSighterWidth * 8 + $hexSighterMargin * 8 * 2;
-  height: $hexSighterWidth * 4 + $hexSighterMargin * 4 * 2 + $hexSighterMarginBottom + 40;
+  height: $hexSighterWidth * 4 + $hexSighterMargin * 4 * 2 + $hexSighterMarginBottom + 70;
   padding: 50px;
   margin: auto;
   top: 0;
@@ -92,7 +92,7 @@ footer {
   }
 }
 
-#hexSighters {
+.hexSighters {
   overflow: hidden;
 
   & > li {
@@ -103,26 +103,18 @@ footer {
     margin: $hexSighterMargin;
     margin-top: $hexSighterMargin;
     margin-bottom: $hexSighterMarginBottom;
-    border: 1px solid rgba( #fff, 0.4 );
     position:relative;
   }
-  .hexs {
-    width:100px;
-    height:100px;
-  }
-  .hex {
-    fill: rgba( #fff, 0.2 );
-    stroke: rgba( #fff, 0.4 );
-    stroke-width: 1;
-  }
-  .precisions {
-    position:absolute;
-    top:5px;
-    left:5px;
+  svg {
+    position: relative;
+    top: -10px;
+    left: -10px;
   }
 }
-
-.hexSighters {
+.precisions {
+  position:absolute;
+  top:5px;
+  left:5px;
 }
 .svg_rect {
   stroke-width: 1px;

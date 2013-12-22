@@ -51,8 +51,8 @@ footer {
 
 #container {
   position: absolute;
-  width: 880px;
-  height: 496px;
+  width: 896px;
+  height: 540px;
   padding: 50px;
   margin: auto;
   top: 0;
@@ -66,29 +66,26 @@ footer {
   #copyright .saucer-web:hover {
     text-decoration: underline; }
 
-#hexSighters {
+.hexSighters {
   overflow: hidden; }
-  #hexSighters > li {
+  .hexSighters > li {
     box-sizing: border-box;
     float: left;
-    width: 106px;
-    height: 106px;
+    width: 108px;
+    height: 108px;
     margin: 2px;
     margin-top: 2px;
-    margin-bottom: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    margin-bottom: 22px;
     position: relative; }
-  #hexSighters .hexs {
-    width: 100px;
-    height: 100px; }
-  #hexSighters .hex {
-    fill: rgba(255, 255, 255, 0.2);
-    stroke: rgba(255, 255, 255, 0.4);
-    stroke-width: 1; }
-  #hexSighters .precisions {
-    position: absolute;
-    top: 5px;
-    left: 5px; }
+  .hexSighters svg {
+    position: relative;
+    top: -10px;
+    left: -10px; }
+
+.precisions {
+  position: absolute;
+  top: 5px;
+  left: 5px; }
 
 .svg_rect {
   stroke-width: 1px;
