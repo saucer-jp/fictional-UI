@@ -6,7 +6,10 @@
 
 $(function(){
   HexSighter.run( 32 );
-  logger.run( 100, null );
+
+  setTimeout( (function(){
+    logger.run( 100, null );
+  }), 2000 )
 });
 
 
@@ -211,7 +214,7 @@ function Indicator( $el, id, $svg ){
   // run
   this.run = function(){
     self.render();
-    //self.event();
+    self.event();
 
     var interval = 500 + Math.floor( Math.random() * 1000 );
     self.setPrecision( interval );
@@ -220,6 +223,8 @@ function Indicator( $el, id, $svg ){
   // event
   this.event = function(){
     var id = statuses.id;
+    setTimeout( self.setMoveHex, 4000 );
+    //self.setMoveHex();
   };
 
   // --------------------
@@ -243,6 +248,41 @@ function Indicator( $el, id, $svg ){
     //$indicator.append( $precisions );
 
     //$parent.append( $indicator );
+  };
+
+  // setMoveHex
+  this.setMoveHex = function(){
+    var id = statuses.id;
+    var $hexs = $('.hexSighter' + id ).find('.svg_hex');
+    var interval = 150 + Math.floor( Math.random() * 800 );
+    var iterator = setInterval( move, interval );
+
+    function getTranslate( start, end, limit, lastTranslate ){
+      var x = start + Math.floor( Math.random() * end );
+      var y = start + Math.floor( Math.random() * end );
+      if( x < limit ){
+        var translate = [
+          'translate(',
+          x + ',',
+          y,
+          '),'
+        ].join('');
+        return translate;
+      } else {
+        return lastTranslate;
+      }
+    }
+
+    function move(){
+      $hexs.each(function(){
+        var $this = $(this)[0];
+        var scale = $this.getAttribute('transform').match(/scale(.*)/)[0]; // scale(0.9)
+        var lastTranslate = $this.getAttribute('transform').match(/translate(.*),/)[0];
+        var translate = getTranslate( -8, 32, 8, lastTranslate );
+        var val = translate + scale;
+        $this.setAttribute('transform', val);
+      });
+    }
   };
 
   // setPrecision
