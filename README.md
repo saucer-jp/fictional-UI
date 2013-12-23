@@ -1,2 +1,1 @@
-# Fictional UI sample
-ヱヴァンゲリヲン新劇場版：Q を映画館に観に行って、劇中にでてくる機器のコントローラーやインジケーターが大変カッコ良かったので、似たようななにかをHTML5, CSS3を使用して作ってみた。
+# Graphical Web Advent Calendar 2013, Day 23
