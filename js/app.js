@@ -216,7 +216,7 @@ function Indicator( $el, id, $svg ){
     self.render();
     self.event();
 
-    var interval = 500 + Math.floor( Math.random() * 1000 );
+    var interval = 800 + Math.floor( Math.random() * 1500 );
     self.setPrecision( interval );
   };
 
