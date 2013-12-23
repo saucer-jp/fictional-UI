@@ -254,7 +254,7 @@ function Indicator( $el, id, $svg ){
   this.setMoveHex = function(){
     var id = statuses.id;
     var $hexs = $('.hexSighter' + id ).find('.svg_hex');
-    var interval = 150 + Math.floor( Math.random() * 800 );
+    var interval = 200 + Math.floor( Math.random() * 1000 );
     var iterator = setInterval( move, interval );
 
     function getTranslate( start, end, limit, lastTranslate ){
