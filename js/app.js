@@ -21,13 +21,10 @@ var HexSighter = {
   // --------------------
   // controller
   // --------------------
-  // run
   run: function( sightSize ){
     var self = this;
     var $el = $('.hexSighters');
     var $svg = $('.hexSighter');
-
-    //self.render( $el );
 
     var indicators = [];
     for( var i = 0; i < sightSize; i++ ){
@@ -37,14 +34,6 @@ var HexSighter = {
       }
     }
   },
-
-  // --------------------
-  // view
-  // --------------------
-  // render
-  //render: function( $el ){
-  //  $('#container').prepend( $el );
-  //}
 };
 
 
@@ -56,7 +45,6 @@ var logger = {
   // --------------------
   // model
   // --------------------
-  // logs
   logs: [
     '==> Upgrading postgresql',
     '==> Downloading http://ftp.postgresql.org/pub/source/v9.1.2/postgresql-9.1.2.tar.bz2',
@@ -115,7 +103,6 @@ var logger = {
     '/usr/local/Cellar/postgresql/9.1.2: 2742 files, 37M, built in 4.0 minutes'
   ],
 
-  // getLog
   getLog: function( logCount ){
     var self = this;
     var logStr = self.logs[ logCount ];
@@ -125,7 +112,6 @@ var logger = {
   // --------------------
   // controller
   // --------------------
-  // run
   run: function( interval, stopCount ){
     var self = this;
     var count = 0;
@@ -162,7 +148,6 @@ var logger = {
   // --------------------
   // view
   // --------------------
-  // printLog
   printLog: function( $logs, logStr ){
 
     var $log = $('<li/>');
@@ -191,16 +176,13 @@ function Indicator( $el, id, $svg ){
   // --------------------
   // model
   // --------------------
-  // statuses
   var statuses = {
     id: null
   };
   statuses.id = id;
 
-  // data
   var data = {};
 
-  // getPrecision
   proto.getPrecision = function(){
     var precision = 0;
     var num = 3 + Math.floor( Math.random() * 3 );
@@ -211,7 +193,6 @@ function Indicator( $el, id, $svg ){
   // --------------------
   // controller
   // --------------------
-  // run
   this.run = function(){
     self.render();
     self.event();
@@ -220,37 +201,20 @@ function Indicator( $el, id, $svg ){
     self.setPrecision( interval );
   };
 
-  // event
   this.event = function(){
     var id = statuses.id;
     setTimeout( self.setMoveHex, 5000 );
-    //self.setMoveHex();
   };
 
   // --------------------
   // view
   // --------------------
-  // render
   this.render = function(){
     var id = statuses.id;
 
     $el.append( $svg.clone().addClass( 'hexSighter' + id ) );
-
-
-    //var $indicator = $('<li/>').addClass( 'hexSighter' + id );
-    //$indicator.text( id + ':' );
-
-    //var hexSVG = self.createHexSVG(5);
-    //$indicator.append( hexSVG );
-
-    //var $precisions = $('<ul/>').addClass('precisions');
-    //$precisions.append('<li/><li/>');
-    //$indicator.append( $precisions );
-
-    //$parent.append( $indicator );
   };
 
-  // setMoveHex
   this.setMoveHex = function(){
     var id = statuses.id;
     var $hexs = $('.hexSighter' + id ).find('.svg_hex');
@@ -285,11 +249,9 @@ function Indicator( $el, id, $svg ){
     }
   };
 
-  // setPrecision
   this.setPrecision = function( interval ){
     var id = statuses.id;
     var $precisions = $('.hexSighter' + id ).find('.precisions li');
-    //var $precisions = $('.hexSighter').find('.precisions li');
     var iterator = setInterval( precision, interval );
 
     function precision(){
@@ -298,68 +260,4 @@ function Indicator( $el, id, $svg ){
       });
     }
   };
-
-  //// createHex
-  //proto.createHexSVG = function( size ){
-  //  var url = 'http://www.w3.org/2000/svg';
-
-  //  // hexs
-  //  var hexs = document.createElementNS( url, 'svg');
-  //  hexs.setAttribute('class','hexs');
-
-  //  // filter
-  //  var defs = document.createElementNS( url, 'defs');
-  //  var filter = document.createElementNS( url, 'filter');
-  //  filter.setAttribute('id','filter');
-
-  //  var feGB = document.createElementNS( url, 'feGaussianBlur');
-  //  feGB.setAttribute('in','SourceAlpha');
-  //  feGB.setAttribute('stdDeviation','2');
-  //  feGB.setAttribute('result','blur');
-
-  //  var feM = document.createElementNS( url, 'feMerge');
-  //  var feMN1 = document.createElementNS( url, 'feMergeNode');
-  //  var feMN2 = document.createElementNS( url, 'feMergeNode');
-  //  feMN1.setAttribute('in','blur');
-  //  feMN2.setAttribute('in','SourceGraphic');
-  //  feM.appendChild( feMN1 );
-  //  feM.appendChild( feMN2 );
-
-  //  filter.appendChild( feGB );
-  //  filter.appendChild( feM );
-  //  defs.appendChild( filter );
-  //  hexs.appendChild( defs );
-  //  
-  //  // hex
-  //  var size = size || 1;
-  //  for( var i = 1; i <= size; i++ ){
-  //    hexs.appendChild( cloneHex() );
-  //  }
-
-  //  function cloneHex(){
-  //    var hex = document.createElementNS( url, 'polygon');
-
-  //    var translate = (function(){
-  //      var result = '';
-  //      var val = 10 * Math.random();
-  //      result = 'translate(' + val + ',' + val + ')';
-  //      return result;
-  //    })();
-
-  //    var scale = (function(){
-  //      var result = '';
-  //      var val = Math.random();
-  //      result = 'scale(' + val + ',' + val + ')';
-  //      return result;
-  //    })();
-
-  //    hex.setAttribute('class','hex');
-  //    hex.setAttribute('transform',translate + ',' + scale);
-  //    hex.setAttribute('filter','url(#filter)');
-  //    hex.setAttribute('points','20,70 0,35 20,0 59.9,0 79.8,35 59.9,70');
-  //    return hex;
-  //  }
-
-  //  return hexs;
-  //};
 }
