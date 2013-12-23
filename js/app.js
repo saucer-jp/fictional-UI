@@ -9,7 +9,7 @@ $(function(){
 
   setTimeout( (function(){
     logger.run( 100, null );
-  }), 2000 )
+  }), 3000 )
 });
 
 
@@ -223,7 +223,7 @@ function Indicator( $el, id, $svg ){
   // event
   this.event = function(){
     var id = statuses.id;
-    setTimeout( self.setMoveHex, 4000 );
+    setTimeout( self.setMoveHex, 5000 );
     //self.setMoveHex();
   };
 
